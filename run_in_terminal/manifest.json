@@ -1,0 +1,20 @@
+{
+    "manifest_version": 2,
+    "name": "run in terminal",
+    "version": "1.0.0",
+    "description": "run shell script in deepin terminal",
+
+    "permissions": [
+        "nativeMessaging",
+        "contextMenus",
+        "<all_urls>"
+    ],
+
+    "icons":{
+        "48":"images/deepin-terminal_48.png"
+    },
+
+    "background": {
+        "scripts": ["js/jquery.min.js", "js/background.js"]
+    }
+}

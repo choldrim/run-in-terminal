@@ -1,0 +1,33 @@
+#!/usr/bin/python3
+
+import os
+import sys
+import struct
+import json
+
+# redirect all output to a file
+fp = open("/tmp/_open_local_app.log", "a")
+sys.stdout = fp
+sys.stderr = fp
+
+# get length of msg
+length_bytes = sys.stdin.buffer.read(4)
+if len(length_bytes) == 0:
+    print("Err: fail to get msg length")
+    fp.close()
+    quit(0)
+
+# get msg
+length = struct.unpack("i", length_bytes)[0]
+text_json = sys.stdin.buffer.read(length).decode("utf-8")
+cmd = json.loads(text_json).get("text")
+
+# run in terminal
+run_cmd = "deepin-terminal -e bash -c '%s ; %s'" % (cmd, os.getenv("SHELL"))
+pid = os.fork()
+if pid:
+    print("parent exit")
+else:
+    os.system(run_cmd)
+
+fp.close()

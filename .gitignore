@@ -1,0 +1,4 @@
+*.crx
+*.pem
+native_hosts/org.deepin.terminal.json
+*.tar.gz

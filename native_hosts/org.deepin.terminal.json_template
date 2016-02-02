@@ -1,0 +1,9 @@
+{
+    "name": "org.deepin.terminal",
+    "description": "run shell script in terminal",
+    "path": "$HOME/.cache/run_in_terminal/start",
+    "type": "stdio",
+    "allowed_origins": [
+        "chrome-extension://jfflfnfmcamklfneiancdgnkjbhldeib/"
+    ]
+}
